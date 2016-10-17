@@ -3,7 +3,10 @@ package com.himangi.twowaybindingdemo;
 import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by himangi.
@@ -32,14 +35,10 @@ public class ImageBinder {
 
         if (url!=null){
 
-
-            //if u want to load web URL then use below code
-//        Picasso picasso =  Picasso.with(view.getContext());
-//        picasso.setIndicatorsEnabled(true);
-//        picasso.load(url)
-//                .error(R.drawable.ic_img_placeholder)
-//                .placeholder(R.drawable.ic_img_placeholder)
-//                .into(view);
+            Log.d("FILE",url);
+        Picasso picasso =  Picasso.with(imageView.getContext());
+        picasso.setIndicatorsEnabled(true);
+        picasso.load(url).placeholder(android.R.drawable.stat_notify_more).into(imageView);
 
         }
     }

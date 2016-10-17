@@ -1,78 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="state"
-            type="com.himangi.twowaybindingdemo.Data" />
+            type="com.himangi.twowaybindingdemo.Data"/>
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="com.himangi.twowaybindingdemo.MainActivity">
+        android:layout_height="wrap_content">
 
-        <!-- Basic example -->
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="@{state.fieldsEnabled}"
-            android:hint="Basic Field"
-            android:text="@={state.basic}"
-            android:inputType="text"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="com.himangi.twowaybindingdemo.MainActivity">
+
+            <!-- Basic example -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="@{state.fieldsEnabled}"
+                android:hint="Basic Field"
+                android:inputType="text"
+                android:text="@={state.basic}"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@={state.basic}" />
-        <!-- Basic + do sth on blur -->
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="@{state.fieldsEnabled}"
-            android:hint="Blurable Field"
-            android:onFocusChange="@{state.onBlurableFocusChange}"
-            android:text="@={state.blurable}"
-            android:inputType="text"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={state.basic}"/>
+            <!-- Basic + do sth on blur -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="@{state.fieldsEnabled}"
+                android:hint="Blurable Field"
+                android:inputType="text"
+                android:onFocusChange="@{state.onBlurableFocusChange}"
+                android:text="@={state.blurable}"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@={state.blurable}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={state.blurable}"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Somthing here "
-            android:text="@={state.firstName}"
-            android:inputType="text"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Somthing here "
+                android:inputType="text"
+                android:text="@={state.firstName}"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@={state.firstName}" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={state.firstName}"/>
 
-        <!-- Toggles UI availability -->
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="@{state.fieldsEnabled}"
-            android:hint="Toggle interface"
-            android:onClick="@{state.onCheckedChanged}"
+            <!-- Toggles UI availability -->
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="@{state.fieldsEnabled}"
+                android:hint="Toggle interface"
+                android:onClick="@{state.onCheckedChanged}"
 
-            />
+                />
 
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="fitXY"
-            app:imageUrl="@{state.photoLocalURL}"
-            android:layout_margin="10dp"/>
-    </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                app:imageUrl="@{state.photo1LocalURL}"/>
+
+
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+
+                />
+        </LinearLayout>
+    </ScrollView>
 </layout>
